@@ -7,6 +7,8 @@ import axios from 'axios';
 const CreateTodo = () => {
   const [taskName, setTaskName] = useState("");
   const [assignee, setAssignee] = useState("");
+  const [InputTask, setInputTask] = useState("")
+  const [SecondTask, setSecondTask] = useState("")
 
   const dispatch = useDispatch("");
   const navigate = useNavigate();
@@ -21,16 +23,35 @@ const CreateTodo = () => {
     navigate('/');
   }
 
+  const handleTaskName = (event) => {
+    setTaskName(event.target.value)
+  }
+
+  const handleAssignee = (event) => {
+    setAssignee(event.target.value)
+  }
+  
+
   return (
-    <form id='todo-form' onSubmit={handleSubmit}>
-      <label htmlFor='taskName'>Task Name:</label>
-      <input name='taskName' value={taskName} />
+    <form id="todo-form" onSubmit={handleSubmit}>
+      <label htmlFor="taskName">Task Name:</label>
+      <input
+        type="text"
+        name="taskName"
+        value={taskName}
+        onChange={handleTaskName}
+      />
 
-      <label htmlFor='assignee'>Assign To:</label>
-      <input name='assignee' value={assignee} />
+      <label htmlFor="assignee">Assign To:</label>
+      <input
+        type="text"
+        name="assignee"
+        value={assignee}
+        onChange={handleAssignee}
+      />
 
-      <button type='submit'>Submit</button>
-      <Link to='/'>Cancel</Link>
+      <button type="submit">Submit</button>
+      <Link to="/">Cancel</Link>
     </form>
   );
 };
